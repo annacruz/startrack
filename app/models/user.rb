@@ -9,5 +9,5 @@ class User < ApplicationRecord
 #  validates :name,  :presence => true
 
   default_scope { order("name") }
-  scope :without, lambda { |user| where("id <> ? ", user.id)}
+  scope :others, lambda { |user| where("id <> ? ", user.id)}
 end

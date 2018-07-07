@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
   end
 
   def load_other_users
-    @users = User.without(current_user)
+    @users = User.others(current_user)
   end
 
   def project_params

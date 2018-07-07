@@ -6,7 +6,8 @@ gem 'dragonfly'
 gem 'jquery-rails'
 gem 'pg', '0.20'
 gem 'listen'
-gem 'rails', '5.0.7'
+gem 'bootsnap'
+gem 'rails', '5.2.0'
 gem 'RedCloth'
 gem 'redis'
 gem 'resque'
@@ -17,7 +18,9 @@ gem 'uglifier'
 
 group :development,:test do
   gem 'pry'
-  gem 'rspec-rails'
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+  gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+end
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'simplecov'
