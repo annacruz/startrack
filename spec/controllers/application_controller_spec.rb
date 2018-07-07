@@ -9,7 +9,7 @@ describe ApplicationController, :type => :controller do
 
   describe "After sigin-in" do
     context "resource is an User" do
-      let(:user) { User.find_by_name('Spok') }
+      let(:user) { create(:user, name: 'Spok') }
 
       it "redirects to projects_url" do
         expect(controller.after_sign_in_path_for(user)).to eq(projects_path)

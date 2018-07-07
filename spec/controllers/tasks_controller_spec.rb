@@ -49,13 +49,15 @@ describe TasksController do
 
     context "valid attributes" do
       before(:each) do
-        do_action(name: "Hidden Project", status_id: 1, type_id: 1 )
+        new_status = create(:status, name: 'Done')
+        new_type = create(:type, name: 'Task')
+        do_action(name: 'Hidden Project', status_id: new_status.id, type_id: new_type.id)
       end
 
       it { expect(assigns(:task))}
       it { expect(assigns(:task).user).to eq(subject.current_user) }
       it { expect(response).to redirect_to(project_task_path(assigns(:task).project, assigns(:task))) }
-      it { should set_flash.to("Task was successfully created.") }
+      it { should set_flash.to('Task was successfully created.') }
     end
 
     context "invalid attributes" do
